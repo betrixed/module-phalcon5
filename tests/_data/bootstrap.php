@@ -4,9 +4,9 @@ use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\View;
-use Phalcon\DI\FactoryDefault;
+use Phalcon\Di\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql;
-use Phalcon\Url as UrlProvider;
+use Phalcon\Url\Url as UrlProvider;
 use Phalcon\Mvc\View\Engine\Volt;
 use Phalcon\Loader;
 

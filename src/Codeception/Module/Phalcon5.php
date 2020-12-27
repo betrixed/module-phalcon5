@@ -13,13 +13,13 @@ use Codeception\Lib\Interfaces\PartedModule;
 use Codeception\TestInterface;
 use Codeception\Util\ReflectionHelper;
 use PDOException;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Di\Injectable;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Model as PhalconModel;
 use Phalcon\Mvc\Router\RouteInterface;
 use Phalcon\Mvc\RouterInterface;
-use Phalcon\Url;
+use Phalcon\Url\Url;
 
 /**
  * This module provides integration with [Phalcon framework](http://www.phalcon.io/) (4.x).
@@ -63,7 +63,7 @@ use Phalcon\Url;
  * <?php
  * $config = include __DIR__ . "/config.php";
  * include __DIR__ . "/loader.php";
- * $di = new \Phalcon\DI\FactoryDefault();
+ * $di = new \Phalcon\Di\FactoryDefault();
  * include __DIR__ . "/services.php";
  * return new \Phalcon\Mvc\Application($di);
  * ?>
@@ -125,7 +125,7 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
                 . "Please create the bootstrap file that returns Application object\n"
                 . "And specify path to it with 'bootstrap' config\n\n"
                 . "Sample bootstrap: \n\n<?php\n"
-                . '$di = new \Phalcon\DI\FactoryDefault();' . "\n"
+                . '$di = new \Phalcon\Di\FactoryDefault();' . "\n"
                 . 'return new \Phalcon\Mvc\Application($di);'
             );
         }

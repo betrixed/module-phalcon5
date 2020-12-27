@@ -26,7 +26,7 @@ class Phalcon5 extends Client
     private $application;
 
     /**
-     * Set Phalcon Application by \Phalcon\DI\Injectable, Closure or bootstrap file path
+     * Set Phalcon Application by \Phalcon\Di\Injectable, Closure or bootstrap file path
      *
      * @param mixed $application
      */

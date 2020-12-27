@@ -1,22 +1,26 @@
 {
-    "name":"codeception/module-phalcon5",
-    "description":"Codeception module for Phalcon 5 framework",
-    "keywords":["codeception", "phalcon"],
-    "homepage":"https://codeception.com/",
-    "type":"library",
-    "license":"MIT",
-    "authors":[
+    "name": "codeception/module-phalcon5",
+    "description": "Codeception module for Phalcon 5 framework",
+    "keywords": [
+        "codeception",
+        "phalcon"
+    ],
+    "homepage": "https://codeception.com/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
         {
-            "name":"Ruud Boon"
+            "name": "Ruud Boon"
         }
     ],
     "minimum-stability": "RC",
-
     "require": {
         "php": ">=8.0",
         "codeception/lib-innerbrowser": "dev-master | ^1.0",
         "codeception/codeception": "4.0.x-dev | ^4.0",
-        "vlucas/phpdotenv": "^4.1"
+        "vlucas/phpdotenv": "^4.1",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0"
     },
     "require-dev": {
         "codeception/util-robohelpers": "dev-master",
@@ -26,8 +30,10 @@
         "vimeo/psalm": "^3.6",
         "codeception/module-db": "^1.0"
     },
-    "autoload":{
-        "classmap": ["src/"]
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
     },
     "config": {
         "classmap-authoritative": true
