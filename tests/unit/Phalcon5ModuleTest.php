@@ -68,7 +68,7 @@ class Phalcon5ModuleTest extends \Codeception\Test\Unit
         $module = $this->getPhalconModule();
         $test = new Codeception\Test\Unit();
         $module->_before($test);
-        $this->assertInstanceOf('Phalcon\Di', $module->di);
+        $this->assertInstanceOf('Phalcon\Di\Di', $module->di);
     }
 
     public function testAfter()
