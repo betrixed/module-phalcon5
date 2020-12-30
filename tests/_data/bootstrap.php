@@ -42,6 +42,24 @@ $di->set(
     }
 );
 
+$di->setShared('modelsManager', function() use ($di) {
+    $manager = new \Phalcon\Mvc\Model\Manager();
+    $manager->setDI($di);
+    return $manager;
+});
+
+$di->setShared('modelsMetadata', function() use ($di) {
+    $helper = new \Phalcon\Support\HelperFactory();
+    
+    $apcu = new \Phalcon\Cache\Adapter\Apcu(
+            $helper,
+            new \Phalcon\Storage\SerializerFactory()
+            );
+    $md = new \Phalcon\Mvc\Model\MetaData\Apcu($apcu);
+    $manager->setDI($di);
+    return $manager;
+});
+
 /**
  * Setting the View
  */
