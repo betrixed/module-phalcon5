@@ -42,8 +42,12 @@ $di->set(
     }
 );
 
+$di->set('models-finder', function() use($di) {
+    return new \Phalcon\Mvc\ModelFinder($di);
+});
+
 $di->setShared('modelsManager', function() use ($di) {
-    $manager = new \Phalcon\Mvc\Model\Manager();
+    $manager = new \Phalcon\Mvc\Model\SqlManager();
     $manager->setDI($di);
     return $manager;
 });
@@ -51,13 +55,13 @@ $di->setShared('modelsManager', function() use ($di) {
 $di->setShared('modelsMetadata', function() use ($di) {
     $helper = new \Phalcon\Support\HelperFactory();
     
-    $apcu = new \Phalcon\Cache\Adapter\Apcu(
+    $fact = new \Phalcon\Cache\AdapterFactory(
             $helper,
             new \Phalcon\Storage\SerializerFactory()
             );
-    $md = new \Phalcon\Mvc\Model\MetaData\Apcu($apcu);
-    $manager->setDI($di);
-    return $manager;
+    $md = new \Phalcon\Mvc\Model\MetaData\Apcu($fact);
+    $md->setDI($di);
+    return $md;
 });
 
 /**
@@ -118,7 +122,7 @@ $di->setShared('url', function () {
 $router = $di->getRouter();
 
 $router->add('/', [
-    'controller' => 'App\Controllers\Index',
+    'controller' => 'WC\Controllers\Index',
     'action'     => 'index'
 ])->setName('front.index');
 

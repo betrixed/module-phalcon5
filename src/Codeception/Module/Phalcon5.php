@@ -310,8 +310,8 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
      *
      * ``` php
      * <?php
-     * $user_id = $I->haveRecord('App\Models\Users', ['name' => 'Phalcon']);
-     * $I->haveRecord('App\Models\Categories', ['name' => 'Testing']');
+     * $user_id = $I->haveRecord('WC\Models\Users', ['name' => 'Phalcon']);
+     * $I->haveRecord('WC\Models\Categories', ['name' => 'Testing']');
      * ?>
      * ```
      *
@@ -361,7 +361,7 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
      *
      * ``` php
      * <?php
-     * $I->seeRecord('App\Models\Categories', ['name' => 'Testing']);
+     * $I->seeRecord('WC\Models\Categories', ['name' => 'Testing']);
      * ?>
      * ```
      *
@@ -383,7 +383,7 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
      *
      * ``` php
      * <?php
-     * $I->seeNumberOfRecords('App\Models\Categories', 3, ['name' => 'Testing']);
+     * $I->seeNumberOfRecords('WC\Models\Categories', 3, ['name' => 'Testing']);
      * ?>
      * ```
      *
@@ -412,7 +412,7 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
      *
      * ``` php
      * <?php
-     * $I->dontSeeRecord('App\Models\Categories', ['name' => 'Testing']);
+     * $I->dontSeeRecord('WC\Models\Categories', ['name' => 'Testing']);
      * ?>
      * ```
      *
@@ -434,7 +434,7 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
      *
      * ``` php
      * <?php
-     * $category = $I->grabRecord('App\Models\Categories', ['name' => 'Testing']);
+     * $category = $I->grabRecord('WC\Models\Categories', ['name' => 'Testing']);
      * ?>
      * ```
      *
@@ -562,9 +562,9 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
         $bind       = [];
         foreach ($attributes as $key => $value) {
             if ($value === null) {
-                $conditions[] = "[$key] IS NULL";
+                $conditions[] = "$key IS NULL";
             } else {
-                $conditions[] = "[$key] = :$key:";
+                $conditions[] = "$key = :$key";
                 $bind[$key] = $value;
             }
         }
@@ -593,9 +593,9 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
         $bind       = [];
         foreach ($attributes as $key => $value) {
             if ($value === null) {
-                $conditions[] = "[$key] IS NULL";
+                $conditions[] = "$key IS NULL";
             } else {
-                $conditions[] = "[$key] = :$key:";
+                $conditions[] = "$key = :$key";
                 $bind[$key] = $value;
             }
         }
@@ -624,7 +624,7 @@ class Phalcon5 extends Framework implements ActiveRecord, PartedModule
         }
 
         $record = new $model();
-        if (!$record instanceof PhalconModel) {
+        if (!$record instanceof \Phalcon\Mvc\Model) {
             throw new ModuleException(__CLASS__, "Model $model is not instance of \\Phalcon\\Mvc\\Model");
         }
 

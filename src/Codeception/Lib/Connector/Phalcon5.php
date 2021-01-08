@@ -3,7 +3,7 @@
 namespace Codeception\Lib\Connector;
 
 use Closure;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Http;
 use RuntimeException;
 use ReflectionProperty;

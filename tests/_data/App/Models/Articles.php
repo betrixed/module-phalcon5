@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace WC\Models;
 
 use Phalcon\Mvc\Model;
 
