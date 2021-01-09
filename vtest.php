@@ -7,6 +7,10 @@ $MOD_DIR = __DIR__;
 $COD_DIR = dirname($MOD_DIR);
 $VENDOR_DIR = dirname($COD_DIR);
 
+function debugLine(string $s) : void 
+{
+    echo( $s . PHP_EOL );
+}
 function phalcon_replace_marker(int $flag, array $cpat, array $paths, 
         array $replacements, int& $pos, int $cursor, int $markpos) : mixed
 {

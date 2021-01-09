@@ -69,12 +69,12 @@ $di->setShared('modelsMetadata', function() use ($di) {
  */
 $di->setShared('view', function () use ($di) {
     $view = new View();
-//    $view->setViewsDir(BASE_PATH . '/_data/App/Views/');
-//    $view->registerEngines(
-//        [
-//            ".volt"  => "voltService"
-//        ]
-//    );
+    $view->setViewsDir(BASE_PATH . '/_data/App/Views/');
+    $view->registerEngines(
+        [
+            ".volt"  => "voltService"
+        ]
+    );
 //    $eventsManager = $di->get('eventsManager');
 //    $eventsManager->attach('view', function ($event, $view) use ($di) {
 //        /**
@@ -122,7 +122,7 @@ $di->setShared('url', function () {
 $router = $di->getRouter();
 
 $router->add('/', [
-    'controller' => 'WC\Controllers\Index',
+    'controller' => 'App\Controllers\Index',
     'action'     => 'index'
 ])->setName('front.index');
 

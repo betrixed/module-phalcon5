@@ -17,7 +17,7 @@ class Phalcon5ModuleTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        
+        \Phalcon\Globals::init();
     }
 
     protected function _after()
@@ -122,14 +122,14 @@ class Phalcon5ModuleTest extends \Codeception\Test\Unit
         $test = new Codeception\Test\Unit();
         $module->_before($test);
 
-        $module->haveRecord('WC\Models\Articles', ['title' => 'phalcon']);
-        $module->seeRecord('WC\Models\Articles', ['title' => 'phalcon']);
-        $module->seeNumberOfRecords('WC\Models\Articles', 1);
-        $module->haveRecord('WC\Models\Articles', ['title' => 'phalcon']);
-        $module->seeNumberOfRecords('WC\Models\Articles', 2);
-        $module->dontSeeRecord('WC\Models\Articles', ['title' => 'wordpress']);
+        $module->haveRecord('App\Models\Articles', ['title' => 'phalcon']);
+        $module->seeRecord('App\Models\Articles', ['title' => 'phalcon']);
+        $module->seeNumberOfRecords('App\Models\Articles', 1);
+        $module->haveRecord('App\Models\Articles', ['title' => 'phalcon']);
+        $module->seeNumberOfRecords('App\Models\Articles', 2);
+        $module->dontSeeRecord('App\Models\Articles', ['title' => 'wordpress']);
 
-        $record = $module->grabRecord('WC\Models\Articles', ['title' => 'phalcon']);
+        $record = $module->grabRecord('App\Models\Articles', ['title' => 'phalcon']);
         $this->assertInstanceOf('Phalcon\Mvc\Model', $record);
 
         $module->_after($test);
