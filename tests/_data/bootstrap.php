@@ -69,24 +69,24 @@ $di->setShared('modelsMetadata', function() use ($di) {
  */
 $di->setShared('view', function () use ($di) {
     $view = new View();
-    $view->setViewsDir(BASE_PATH . '/_data/App/Views/');
+    $view->setViewsDir(BASE_PATH . '/tests/_data/App/Views/');
     $view->registerEngines(
         [
             ".volt"  => "voltService"
         ]
     );
-//    $eventsManager = $di->get('eventsManager');
-//    $eventsManager->attach('view', function ($event, $view) use ($di) {
-//        /**
-//         * @var \Phalcon\Events\Event $event
-//         * @var \Phalcon\Mvc\View $view
-//         */
-//        if ($event->getType() == 'notFoundView') {
-//            $message = sprintf('View not found - %s', $view->getActiveRenderPath());
-//            throw new Exception($message);
-//        }
-//    });
-//    $view->setEventsManager($eventsManager);
+    $eventsManager = $di->get('eventsManager');
+    $eventsManager->attach('view', function ($event, $view) use ($di) {
+        /**
+         * @var \Phalcon\Events\Event $event
+         * @var \Phalcon\Mvc\View $view
+         */
+        if ($event->getType() == 'notFoundView') {
+            $message = sprintf('View not found - %s', $view->getActiveRenderPath());
+            throw new Exception($message);
+        }
+    });
+    $view->setEventsManager($eventsManager);
     return $view;
 });
 
